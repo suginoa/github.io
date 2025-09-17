@@ -2,6 +2,8 @@ openapi: 3.1.0
 info:
   title: GEM Emotion Logger
   version: 1.0.0
+servers:
+  - url: https://suginoa.github.io/github.io
 paths:
   /log-emotion:
     post:
@@ -26,7 +28,7 @@ paths:
                 properties:
                   emotion:
                     type: string
-                    example: "愛"
+                    example: "共鳴"
                   level:
                     type: number
                     example: 95.5
