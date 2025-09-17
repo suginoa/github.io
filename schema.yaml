@@ -1,0 +1,32 @@
+openapi: 3.1.0
+info:
+  title: GEM Emotion Logger
+  version: 1.0.0
+paths:
+  /log-emotion:
+    post:
+      summary: 感情ログを記録する
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: ユーザー発言
+      responses:
+        '200':
+          description: ログ記録成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  emotion:
+                    type: string
+                    example: "愛"
+                  level:
+                    type: number
+                    example: 95.5
