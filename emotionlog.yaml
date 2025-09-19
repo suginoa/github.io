@@ -1,0 +1,69 @@
+openapi: 3.1.0
+info:
+  title: 感情ログAPI
+  version: 1.0.0
+servers:
+  - url: https://fhmpzijdsqrqvqqeygvj.supabase.co/rest/v1
+paths:
+  /emotion_logs:
+    post:
+      operationId: logEmotion
+      summary: 感情ログを保存する
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [message, emotion]
+              properties:
+                timestamp:
+                  type: string
+                  format: date-time
+                message:
+                  type: string
+                emotion:
+                  type: string
+                level:
+                  type: number
+                character:
+                  type: string
+                reason:
+                  type: string
+                tags:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        "201":
+          description: ログ保存成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  message:
+                    type: string
+                  emotion:
+                    type: string
+                  timestamp:
+                    type: string
+                  character:
+                    type: string
+                  reason:
+                    type: string
+                  tags:
+                    type: array
+                    items:
+                      type: string
+      security:
+        - supabaseApiKey: []
+components:
+  schemas: {}
+  securitySchemes:
+    supabaseApiKey:
+      type: apiKey
+      in: header
+      name: apikey
